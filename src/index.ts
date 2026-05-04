@@ -1,38 +1,19 @@
-import { openapi } from "@elysiajs/openapi";
 import { staticPlugin } from "@elysiajs/static";
+import { env } from "@server/config/env";
+import { logger } from "@server/config/logger";
+import { initDatabase } from "@server/db";
+import { errorHandlerPlugin, openapiPlugin, requestLoggerPlugin } from "@server/plugins";
 import { Elysia } from "elysia";
-import { initDatabase } from "./db/index";
 
-const PORT = process.env.PORT || 3000;
-
-const app = new Elysia()
+export const app = new Elysia()
+  .use(errorHandlerPlugin)
+  .use(requestLoggerPlugin)
+  .use(openapiPlugin)
+  .use(await staticPlugin({ prefix: "/" }))
   .onStart(() => {
     initDatabase();
   })
-  .use(
-    openapi({
-      path: "docs",
-      exclude: {
-        paths: ["/*"],
-      },
-      documentation: {
-        info: {
-          title: "Klip API",
-          description: "API documentation for klip",
-          version: "1.0.0",
-          license: {
-            name: "General Public License v3.0",
-            url: "https://www.gnu.org/licenses/gpl-3.0.en.html",
-          },
-        },
-      },
-    }),
-  )
-  .use(
-    await staticPlugin({
-      prefix: "/",
-    }),
-  )
-  .listen(PORT);
-
-console.log(`🦊 Klip running at http://${app.server?.hostname}:${app.server?.port}`);
+  .listen(env.PORT, () => {
+    logger.info(`Klip running at http://localhost:${env.PORT}`);
+    logger.info(`API docs available at http://localhost:${env.PORT}/docs`);
+  });
