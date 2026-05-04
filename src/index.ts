@@ -1,10 +1,14 @@
 import { openapi } from "@elysiajs/openapi";
 import { staticPlugin } from "@elysiajs/static";
 import { Elysia } from "elysia";
+import { initDatabase } from "./db/index";
 
 const PORT = process.env.PORT || 3000;
 
 const app = new Elysia()
+  .onStart(() => {
+    initDatabase();
+  })
   .use(
     openapi({
       path: "docs",
