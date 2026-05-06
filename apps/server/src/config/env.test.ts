@@ -33,7 +33,7 @@ describe("env", () => {
   it("should throw if required env is missing", () => {
     expect(() =>
       loadEnv({
-        NODE_ENV: "development",
+        PORT: 3000,
       } as unknown as NodeJS.ProcessEnv),
     ).toThrow();
   });

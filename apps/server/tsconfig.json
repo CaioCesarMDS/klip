@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext"],
     "target": "ESNext",
     "module": "ESNext",
     "types": ["bun-types"],
-    "jsx": "react-jsx",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
@@ -19,8 +18,7 @@
     "noUnusedParameters": true,
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@server/*": ["./src/*"],
-      "@public/*": ["./public/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

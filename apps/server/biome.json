@@ -27,14 +27,6 @@
       "semicolons": "always"
     }
   },
-  "css": {
-    "formatter": {
-      "quoteStyle": "double"
-    },
-    "parser": {
-      "tailwindDirectives": true
-    }
-  },
   "assist": {
     "enabled": true,
     "actions": {

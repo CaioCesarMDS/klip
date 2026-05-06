@@ -1,6 +1,5 @@
-import { isDev } from "@server/config/constants";
-import type { TSchema } from "@sinclair/typebox";
-import type { ValidationError } from "elysia";
+import type { TSchema, ValidationError } from "elysia";
+import { isDev } from "@/config/constants";
 import type { ValidationDetailsItem } from "./types";
 
 export const createInternalError = (message: string) => ({

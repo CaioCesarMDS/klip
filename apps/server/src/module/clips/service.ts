@@ -1,6 +1,6 @@
 import { randomUUID as uuid } from "node:crypto";
-import { db } from "@server/db";
-import { InternalError } from "@server/shared/errors";
+import { db } from "@//db";
+import { InternalError } from "@//shared/errors";
 import { clipMapper } from "./mapper";
 import { BASE_CLIP_SELECT, SELECT_LIST } from "./sql";
 import type { Clip, ClipListRes, ClipQuery, ClipRow, CreateClip } from "./types";

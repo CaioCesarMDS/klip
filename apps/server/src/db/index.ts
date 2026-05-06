@@ -1,7 +1,7 @@
 import { Database } from "bun:sqlite";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { logger } from "@server/config/logger";
+import { logger } from "@/config/logger";
 
 export const db = new Database("klip.db", {
   strict: true,

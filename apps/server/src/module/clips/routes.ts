@@ -1,9 +1,9 @@
+import { Elysia } from "elysia";
 import {
   InternalErrorModel,
   NotFoundErrorModel,
   ValidationErrorModel,
-} from "@server/shared/errors/model";
-import { Elysia } from "elysia";
+} from "@//shared/errors/model";
 import { ClipListQuery, ClipListResponse, ClipModel, CreateClipBody } from "./model";
 import { ClipsService } from "./service";
 

@@ -1,12 +1,12 @@
-import { logger } from "@server/config/logger";
-import { InternalError, NotFoundError } from "@server/shared/errors";
+import { Elysia, type ValidationError } from "elysia";
+import { InternalError, NotFoundError } from "@//shared/errors";
+import { logger } from "@/config/logger";
 import {
   InternalErrorModel,
   NotFoundErrorModel,
   ValidationErrorModel,
-} from "@server/shared/errors/model";
-import { createInternalError, formatValidationDetails } from "@server/shared/errors/utils";
-import { Elysia, type ValidationError } from "elysia";
+} from "@/shared/errors/model";
+import { createInternalError, formatValidationDetails } from "@/shared/errors/utils";
 
 export const errorHandlerPlugin = new Elysia({ name: "error" })
   .error({

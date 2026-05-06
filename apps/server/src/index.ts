@@ -1,9 +1,8 @@
-import { staticPlugin } from "@elysiajs/static";
-import { env } from "@server/config/env";
-import { logger } from "@server/config/logger";
-import { initDatabase } from "@server/db";
-import { errorHandlerPlugin, openapiPlugin, requestLoggerPlugin } from "@server/plugins";
 import { Elysia } from "elysia";
+import { initDatabase } from "@/db";
+import { errorHandlerPlugin, openapiPlugin, requestLoggerPlugin } from "@/plugins";
+import { env } from "./config/env";
+import { logger } from "./config/logger";
 import { clipsRoutes } from "./module/clips/routes";
 
 export const app = new Elysia()
@@ -11,7 +10,6 @@ export const app = new Elysia()
   .use(requestLoggerPlugin)
   .use(openapiPlugin)
   .use(clipsRoutes)
-  .use(await staticPlugin({ prefix: "/" }))
   .onStart(() => {
     initDatabase();
   })
