@@ -2,6 +2,9 @@ import { openapi } from "@elysiajs/openapi";
 
 export const openapiPlugin = openapi({
   path: "/docs",
+  exclude: {
+    paths: ["/*", ""],
+  },
   documentation: {
     info: {
       title: "Klip API",
