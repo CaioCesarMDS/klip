@@ -14,11 +14,11 @@ CREATE TABLE IF NOT EXISTS clips (
     source TEXT,
     is_favorite INTEGER DEFAULT 0,
 
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at DATETIME NOT NULL,
 
     CHECK (is_favorite IN (0, 1)),
-    CHECK (content_type IN ('text', 'link', 'code', 'json', 'html', 'image')),
+    CHECK (content_type IN ('text', 'link', 'code', 'image')),
     CHECK (content IS NOT NULL OR file_path IS NOT NULL)
 );
 
